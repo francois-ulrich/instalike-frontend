@@ -8,7 +8,7 @@ export async function getLoginFromApi(
 ): Promise<LoginResponse> {
   const { login, password } = formLoginData;
 
-  const response = axiosClient.post<LoginResponse>("/api/auth/login", {
+  const response = axiosClient.post<LoginResponse>("/auth/login", {
     login,
     password,
   });
@@ -21,7 +21,7 @@ export async function getLoginFromApi(
 export async function getAuthenticatedUserFromApi(): Promise<
   AxiosResponse<LoginResponse>
 > {
-  const response = axiosClient.get<LoginResponse>("/api/auth/me");
+  const response = axiosClient.get<LoginResponse>("/auth/user");
   const result = await response;
   return result;
 }
