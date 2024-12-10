@@ -8,8 +8,8 @@ export const LoginForm = () => {
   const authenticationContext = useAuthenticationContext();
 
   const [formData, setFormData] = useState<LoginFormData>({
-    login: "fulrich3@gmail.com",
-    password: "123456@aZ",
+    email: "fulrich3@gmail.com",
+    password: "123456@Az",
   });
 
   // Fonction de gestion des changements de chaque champ
@@ -39,7 +39,7 @@ export const LoginForm = () => {
             <Form.Control
               type="email"
               name="email"
-              value={formData.login}
+              value={formData.email}
               onChange={handleInputChange}
             />
           </Form.Group>
