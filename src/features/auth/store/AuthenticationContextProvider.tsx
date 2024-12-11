@@ -10,24 +10,18 @@ import { LoginFormData } from "../custom-types";
 export const AuthenticationContextProvider = (props: PropsWithChildren) => {
   // Initialize
   const [state, setState] = useState<AuthenticationContextState>({
-    user: {
-      email: null,
-      username: null,
-    },
+    user: null,
     authenticated: false,
     autoAuthIsDone: false,
   });
 
   const logIn = (formLoginData: LoginFormData) => {
     business.login(formLoginData).then((res) => {
-      const { email, username } = res;
+      const { user } = res;
 
       setState({
         ...state,
-        user: {
-          email,
-          username,
-        },
+        user,
         authenticated: true,
       });
     });
@@ -36,10 +30,7 @@ export const AuthenticationContextProvider = (props: PropsWithChildren) => {
   const logOut = () => {
     setState({
       ...state,
-      user: {
-        email: null,
-        username: null,
-      },
+      user: null,
       authenticated: false,
     });
   };
@@ -48,14 +39,11 @@ export const AuthenticationContextProvider = (props: PropsWithChildren) => {
     try {
       const result = await business.getAuthenticatedUser();
 
-      const { email, username } = result.data;
+      const { user } = result.data;
 
       setState({
         ...state,
-        user: {
-          email,
-          username,
-        },
+        user,
         authenticated: true,
       });
     } catch {

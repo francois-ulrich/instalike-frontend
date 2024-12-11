@@ -19,10 +19,7 @@ export interface MutableAuthenticationContext {
 
 const initialContextState: MutableAuthenticationContext = {
   state: {
-    user: {
-      email: null,
-      username: null,
-    },
+    user: null,
     authenticated: false,
     autoAuthIsDone: false,
   },
